@@ -8,7 +8,7 @@ const client = new ApolloClient({
         defaults:{
             auth:{
                 __typename: "Auth",
-                isLoggedIn: Boolean(localStorage.getItem("jwt"))
+                isLoggedIn: localStorage.getItem("jwt")? true: false
             }
         },
         resolvers:{
