@@ -8,7 +8,7 @@ import {
  
 } from "../../types/api";
 import PhoneLoginPresenter from "./PhoneLoginPresenter";
-import { PHONE_SIGN_IN } from "./PhoneQueries.queries";
+import { PHONE_SIGN_IN } from "./PhoneQueries";
 
 interface IState {
     countryCode: string;
@@ -66,13 +66,8 @@ interface IState {
             const phone = `${countryCode}${phoneNumber}`;
             const isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test(phone);
             if (isValid) {
-             // mutation();
-             history.push({
-              pathname: "/verify-phone",
-                state: {
-                  phone
-                }
-             });
+             
+             mutation();
             } else {
               toast.error("Please write a valid phone number");
             }
