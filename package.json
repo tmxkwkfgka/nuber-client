@@ -11,6 +11,7 @@
     "react": "^16.6.3",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.6.3",
+    "react-facebook-login": "^4.1.1",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts-ts": "3.1.0",
@@ -23,9 +24,8 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",
-    "precodegen":"apollo schema:download --endpoint=http://localhost:4004/graphql",
-    "codegen":"apollo client:codegen src/types/api.d.ts --queries=src/**/*.ts --addTypename --localSchemaFile=schema.json --target=typescript --outputFlat"
-
+    "precodegen": "apollo schema:download --endpoint=http://localhost:4004/graphql",
+    "codegen": "apollo codegen:generate src/types/api.d.ts --queries='src/**/!(*.local).ts' --addTypename --schema schema.json --target typescript --outputFlat"
   },
   "devDependencies": {
     "@types/jest": "^23.3.9",
