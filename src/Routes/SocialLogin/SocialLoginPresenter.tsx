@@ -24,7 +24,11 @@ const BackArrowExtended = styled(BackArrow)`
   top: 20px;
   left: 20px;
 `;
-const SocialLoginPresenter = () => (
+
+interface IProps {
+  loginCallback: (response) => void;
+}
+const SocialLoginPresenter: React.SFC<IProps> = ({ loginCallback }) => (
   <Container>
     <Helmet>
       <title>Social Login | Nuber</title>
@@ -33,8 +37,8 @@ const SocialLoginPresenter = () => (
     <BackArrowExtended backTo={"/"} />
     <FacebookLogin
       appId="1718196768212364"
-      autoLoad={true}
-      fields="name,email,picture"
+      autoLoad={false}
+      fields="name,first_name,last_name,email"
       callback={null}
       render={renderProps => (
         <Link onClick={renderProps.onClick}>
