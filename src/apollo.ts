@@ -15,6 +15,7 @@ const client = new ApolloClient({
             Mutations: {
                 // resolver랑 똑같음 parent argument context
                 logUserIn: (_, {token}, {cache})=>{
+                    console.log("login resolver")
                     localStorage.setItem("jwt", token);
                     cache.writeData({
                        data:{

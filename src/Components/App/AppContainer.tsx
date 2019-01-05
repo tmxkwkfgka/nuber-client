@@ -10,13 +10,15 @@ import {IS_LOGGED_IN} from "./AppQueries.local";
 
 
 
-const AppContainer  = ({data}) => (
+const AppContainer  = ({data}) => {
+  console.log("data auth data", data)
+  return (
 <React.Fragment>
     <ThemeProvider theme={theme}>
       <AppPresenter isLoggedIn={data.auth.isLoggedIn} />
     </ThemeProvider>
     <ToastContainer draggable={true} position={"bottom-center"} />
 </React.Fragment>
-);
+)};
 
 export default graphql(IS_LOGGED_IN)(AppContainer);

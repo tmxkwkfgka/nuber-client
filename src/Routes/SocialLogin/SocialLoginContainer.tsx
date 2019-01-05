@@ -30,10 +30,13 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
   
     return (
       <Mutation mutation={LOG_USER_IN}>
-      {logUserIn => (
+      {logUserIn => {
+        console.log("resolver", logUserIn)
+        return (
         <LoginMutation
           mutation={FACEBOOK_CONNECT}
           onCompleted={data => {
+            console.log('log user in mutation ', data)
             const { FacebookConnect } = data;
             if (FacebookConnect.ok) {
               logUserIn({
@@ -47,13 +50,14 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
           }}
         >
           {(facebookMutation, { loading }) => {
+            console.log("fb mutation", facebookMutation);
             this.facebookMutation = facebookMutation;
             return (
               <SocialLoginPresenter loginCallback={this.loginCallback} />
             );
           }}
         </LoginMutation>
-      )}
+      )}}
     </Mutation>
     );
   }
